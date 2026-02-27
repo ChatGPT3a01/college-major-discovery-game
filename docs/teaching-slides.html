@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 AI 驅動的 RPG 遊戲製作教學</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 10000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .nav-buttons { display: flex; gap: 12px; }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.25);
+            color: white;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.4);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 9000;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-arrow:hover {
+            background: rgba(255,255,255,0.5);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .prev-arrow { left: 30px; }
+        .next-arrow { right: 30px; }
+        .nav-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .slide-container {
+            width: 100%;
+            height: 100vh;
+            padding-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 60px; left: 0;
+            width: 100%;
+            height: calc(100vh - 60px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 10;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            z-index: 20;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            padding: 60px;
+            max-width: 1400px;
+            width: 95%;
+            max-height: 88vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        h1 { color: #1e3c72; font-size: 56px; margin-bottom: 24px; text-align: center; }
+        h2 { color: #2a5298; font-size: 38px; margin-bottom: 35px; border-bottom: 3px solid #1e3c72; padding-bottom: 12px; }
+        h3 { color: #1e3c72; font-size: 26px; margin: 30px 0 15px 0; }
+        p, li { font-size: 20px; line-height: 1.8; color: #444; margin-bottom: 15px; }
+        code { background: #f0f2f5; padding: 3px 8px; border-radius: 6px; font-family: monospace; color: #d63384; font-weight: 600; }
+
+        .box { padding: 25px; border-radius: 12px; margin: 25px 0; border-left: 6px solid; font-size: 20px; }
+        .info { background: #e3f2fd; border-color: #2196f3; color: #0d47a1; }
+        .warning { background: #fff3cd; border-color: #ffc107; color: #856404; }
+        .success { background: #d4edda; border-color: #28a745; color: #155724; }
+
+        .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .concept-card { background: #f8f9fa; padding: 25px; border-radius: 15px; border: 1px solid #e9ecef; transition: transform 0.3s; }
+        .concept-card:hover { transform: translateY(-8px); border-color: #4facfe; }
+
+        .indicators { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 4000; padding: 10px 25px; background: rgba(0,0,0,0.3); border-radius: 30px; backdrop-filter: blur(5px); }
+        .dot { width: 12px; height: 12px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; }
+        .dot.active { background: #4facfe; transform: scale(1.3); }
+    </style>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <div class="nav-title">🎮 AI 驅動的 RPG 遊戲製作教學</div>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="goToSlide(0)">🏠 首頁</button>
+            <button class="nav-btn" onclick="toggleFullscreen()">🖥️ 全螢幕</button>
+        </div>
+    </div>
+
+    <div class="slide-container">
+
+        <!-- Slide 1: 封面 -->
+        <div class="slide active">
+            <div class="content-card" style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <h1>🎮 AI 驅動的 RPG 遊戲製作</h1>
+                <h2 style="border: none; font-weight: normal; font-size: 28px; color: #666; max-width: 800px;">
+                    從零到有的完整教學
+                </h2>
+                <div style="margin-top: 40px; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                    <span style="background: #e3f2fd; padding: 10px 20px; border-radius: 20px; color: #0d47a1;">📚 NotebookLM</span>
+                    <span style="background: #f3e5f5; padding: 10px 20px; border-radius: 20px; color: #4a148c;">✨ Gemini</span>
+                    <span style="background: #e8f5e9; padding: 10px 20px; border-radius: 20px; color: #1b5e20;">🎨 圖片生成</span>
+                    <span style="background: #fce4ec; padding: 10px 20px; border-radius: 20px; color: #880e4f;">💻 React</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: 課程目標 -->
+        <div class="slide">
+            <div class="content-card">
+                <h2>📖 課程目標</h2>
+                <p>你將學習如何用 AI 工具快速製作遊戲：</p>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h3>📝 資料蒐集</h3>
+                        <p>用 NotebookLM 蒐集和整理資料</p>
+                    </div>
+                    <div class="concept-card">
+                        <h3>✨ 內容生成</h3>
+                        <p>用 Gemini AI 生成故事和角色</p>
+                    </div>
+                    <div class="concept-card">
+                        <h3>🎨 圖片設計</h3>
+                        <p>用提示詞生成高質量圖片</p>
+                    </div>
+                    <div class="concept-card">
+                        <h3>💻 技術實現</h3>
+                        <p>用 React 實現遊戲前端</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: AI 工具介紹 -->
+        <div class="slide">
+            <div class="content-card">
+                <h2>🤖 主要 AI 工具</h2>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h3>📝 NotebookLM</h3>
+                        <p>Google 的筆記應用。上傳資料，自動整理和生成 Podcast。</p>
+                    </div>
+                    <div class="concept-card">
+                        <h3>✨ Gemini</h3>
+                        <p>Google 最新 AI 模型。生成故事、角色、對話。免費版夠用。</p>
+                    </div>
+                    <div class="concept-card">
+                        <h3>🎨 圖片生成</h3>
+                        <p>Gemini / DALL-E / Midjourney。根據提示詞生成圖片。</p>
+                    </div>
+                    <div class="concept-card">
+                        <h3>💻 GitHub + Vercel</h3>
+                        <p>版本控制和自動部署。完全免費。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: 遊戲架構 -->
+        <div class="slide">
+            <div class="content-card">
+                <h2>🏗️ 遊戲核心架構</h2>
+                <h3>4 個關鍵組件：</h3>
+                <ul style="margin-left: 30px;">
+                    <li style="margin-bottom: 15px;"><strong>故事引擎</strong>：管理故事節點和分支</li>
+                    <li style="margin-bottom: 15px;"><strong>屬性系統</strong>：6 維屬性（創意力、分析力、領導力、同理心、勇氣、好奇心）</li>
+                    <li style="margin-bottom: 15px;"><strong>角色導師</strong>：11 位導師的故事和互動</li>
+                    <li style="margin-bottom: 15px;"><strong>結果生成</strong>：AI 分析並推薦科系</li>
+                </ul>
+                <div class="box info">
+                    <strong>遊戲特色：</strong> 完整的教育遊戲，幫助學生探索升學方向
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: 4 週計畫 Part 1 -->
+        <div class="slide">
+            <div class="content-card">
+                <h2>📅 4 週完整製作計畫</h2>
+                <h3>Week 1: 計劃與資料蒐集</h3>
+                <ul style="margin-left: 30px;">
+                    <li>定義遊戲概念和目標族群</li>
+                    <li>蒐集 11 位導師的真實故事</li>
+                    <li>用 NotebookLM 整理資料</li>
+                </ul>
+                <h3>Week 2: 內容生成</h3>
+                <ul style="margin-left: 30px;">
+                    <li>用 Gemini 生成導師設定</li>
+                    <li>生成故事分支（50+ 個選擇點）</li>
+                    <li>建立 JSON 格式的故事數據</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 6: 4 週計畫 Part 2 -->
+        <div class="slide">
+            <div class="content-card">
+                <h2>📅 Week 3-4: 開發與發布</h2>
+                <h3>Week 3: 技術實現</h3>
+                <ul style="margin-left: 30px;">
+                    <li>搭建 React 專案</li>
+                    <li>實現故事引擎和屬性系統</li>
+                    <li>製作屬性雷達圖</li>
+                    <li>全面測試</li>
+                </ul>
+                <h3>Week 4: 完善與發布</h3>
+                <ul style="margin-left: 30px;">
+                    <li>根據測試反饋調整</li>
+                    <li>生成高質量圖片和音樂</li>
+                    <li>部署到 GitHub Pages</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: 故事設計 -->
+        <div class="slide">
+            <div class="content-card">
+                <h2>📖 故事設計重點</h2>
+                <h3>好的故事選擇應該：</h3>
+                <ul style="margin-left: 30px;">
+                    <li>反映不同的人格和價值觀</li>
+                    <li>有真實且邏輯合理的後果</li>
+                    <li>沒有明顯的「正確答案」</li>
+                    <li>影響最終的屬性和結果</li>
+                </ul>
+                <div class="box warning">
+                    <strong>常見錯誤：</strong> 所有選擇都導向相同結果，或明顯有「正確答案」
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: 提示詞工程 -->
+        <div class="slide">
+            <div class="content-card">
+                <h2>🎯 提示詞工程關鍵</h2>
+                <h3>高質量提示詞三要素：</h3>
+                <ul style="margin-left: 30px;">
+                    <li><strong>背景信息：</strong> 告訴 AI 你的身份和任務背景</li>
+                    <li><strong>具體任務：</strong> 明確說明要做什麼</li>
+                    <li><strong>詳細要求：</strong> 指定輸出格式、風格、限制條件</li>
+                </ul>
+                <div class="box success">
+                    <strong>微調技巧：</strong> 加入具體數據、提供風格參考、指定輸出格式
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: 圖片生成策略 -->
+        <div class="slide">
+            <div class="content-card">
+                <h2>🎨 AI 圖片生成策略</h2>
+                <h3>最佳實踐：</h3>
+                <ul style="margin-left: 30px;">
+                    <li><strong>❌ 不要：</strong> 邊做邊生成（浪費時間）</li>
+                    <li><strong>✅ 要：</strong> 故事 90% 完成後集中生成</li>
+                </ul>
+                <h3>生成順序：</h3>
+                <ol style="margin-left: 30px;">
+                    <li>完成所有故事和角色設定</li>
+                    <li>確定最終敘事和設計</li>
+                    <li>一次性生成所有圖片提示詞</li>
+                    <li>批量生成圖片</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 10: 技術實現 -->
+        <div class="slide">
+            <div class="content-card">
+                <h2>💻 技術實現要點</h2>
+                <h3>推薦技術棧：</h3>
+                <ul style="margin-left: 30px;">
+                    <li><strong>前端：</strong> React 19 + TypeScript</li>
+                    <li><strong>樣式：</strong> Tailwind CSS</li>
+                    <li><strong>圖表：</strong> Recharts（屬性雷達圖）</li>
+                    <li><strong>AI：</strong> Gemini API（免費）</li>
+                    <li><strong>部署：</strong> Vercel（自動部署）</li>
+                </ul>
+                <div class="box info">
+                    <strong>代碼量：</strong> MVP 版本 500-800 行 | 完整版本 2000+ 行 | 1 人 3-4 週完成
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: 測試與優化 -->
+        <div class="slide">
+            <div class="content-card">
+                <h2>✅ 測試與優化</h2>
+                <h3>測試檢查清單：</h3>
+                <ul style="margin-left: 30px;">
+                    <li>功能測試（所有故事和選擇都能運作）</li>
+                    <li>內容測試（故事是否有趣、邏輯是否合理）</li>
+                    <li>UI/UX 測試（是否易於使用）</li>
+                    <li>兼容性測試（手機、平板、桌面）</li>
+                </ul>
+                <h3>最常見的改進：</h3>
+                <ul style="margin-left: 30px;">
+                    <li>「故事太短」→ 增加更多分支</li>
+                    <li>「選擇感不強」→ 讓不同選擇產生不同結果</li>
+                    <li>「屬性不明顯」→ 選擇後立即顯示變化</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 12: 發布與分享 -->
+        <div class="slide">
+            <div class="content-card">
+                <h2>🚀 發布與分享</h2>
+                <h3>部署步驟（3 步）：</h3>
+                <ol style="margin-left: 30px;">
+                    <li>推送到 GitHub</li>
+                    <li>連接 Vercel 帳戶</li>
+                    <li>點擊 Deploy（自動完成！）</li>
+                </ol>
+                <h3>分享方式：</h3>
+                <ul style="margin-left: 30px;">
+                    <li>📎 直接連結</li>
+                    <li>📱 QR Code</li>
+                    <li>📧 郵件、社群媒體</li>
+                    <li>🏫 學校推廣</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 13: 課程總結 -->
+        <div class="slide">
+            <div class="content-card" style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <h1>🎉 課程總結</h1>
+                <h2 style="border: none; font-weight: normal; font-size: 28px; color: #666; max-width: 800px;">
+                    你現在已經擁有：
+                </h2>
+                <div class="concept-grid" style="margin-top: 40px; max-width: 800px;">
+                    <div class="concept-card">
+                        <h3>✅ 遊戲設計知識</h3>
+                    </div>
+                    <div class="concept-card">
+                        <h3>✅ AI 工具技能</h3>
+                    </div>
+                    <div class="concept-card">
+                        <h3>✅ 可展示的作品</h3>
+                    </div>
+                    <div class="concept-card">
+                        <h3>✅ 教學材料</h3>
+                    </div>
+                </div>
+                <p style="margin-top: 40px; font-size: 24px; color: #1e3c72;">
+                    <strong>立即開始你的遊戲製作之旅！</strong>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="nav-arrow prev-arrow" id="prevBtn" onclick="changeSlide(-1)">❮</button>
+    <button class="nav-arrow next-arrow" id="nextBtn" onclick="changeSlide(1)">❯</button>
+
+    <div class="indicators" id="indicatorContainer"></div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function init() {
+            createIndicators();
+            showSlide(0);
+            updateButtons();
+            document.addEventListener('keydown', handleKeydown);
+        }
+
+        function handleKeydown(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        }
+
+        function createIndicators() {
+            const container = document.getElementById('indicatorContainer');
+            container.innerHTML = '';
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.onclick = () => goToSlide(index);
+                container.appendChild(dot);
+            });
+        }
+
+        function showSlide(index) {
+            if (index < 0) index = 0;
+            if (index >= totalSlides) index = totalSlides - 1;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            currentSlide = index;
+
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === index);
+            });
+
+            updateButtons();
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
