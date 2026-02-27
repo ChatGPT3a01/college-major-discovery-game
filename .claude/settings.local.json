@@ -14,7 +14,10 @@
       "Bash(grep ✓:*)",
       "Bash(git add:*)",
       "Bash(git status:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(cat:*)",
+      "Bash(python3:*)",
+      "Bash(cd D:\\\\AI教學與專案實作\\\\專案_學系探索遊戲\\\\docs:*)"
     ]
   }
 }
