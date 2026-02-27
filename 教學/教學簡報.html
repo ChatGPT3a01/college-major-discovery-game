@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 驅動的 RPG 遊戲製作教學</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .slide {
+            display: none;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+            min-height: 600px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .slide h1 {
+            font-size: 52px;
+            color: #667eea;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        .slide h2 {
+            font-size: 36px;
+            color: #667eea;
+            margin: 30px 0 20px 0;
+            font-weight: 700;
+        }
+
+        .slide h3 {
+            font-size: 24px;
+            color: #764ba2;
+            margin: 20px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .slide p, .slide li {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .slide ul {
+            margin-left: 30px;
+        }
+
+        .slide li {
+            margin-bottom: 10px;
+        }
+
+        .cover-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 80px 40px;
+        }
+
+        .cover-slide h1 {
+            font-size: 64px;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .cover-slide p {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cover-slide .subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        .slide-counter {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .grid-2 div {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .emoji {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 封面 -->
+        <div class="slide cover-slide active">
+            <h1>🎮 AI 驅動的 RPG 遊戲製作</h1>
+            <p>從零到有的完整教學</p>
+            <div class="subtitle">
+                <p>🎓 學習如何用 AI 工具快速製作遊戲</p>
+                <p>📚 通過實戰項目掌握遊戲開發</p>
+                <p>🚀 完成屬於你自己的 RPG 遊戲</p>
+            </div>
+        </div>
+
+        <!-- 課程目標 -->
+        <div class="slide">
+            <h1>📖 課程目標</h1>
+            <h2>你將學習：</h2>
+            <ul>
+                <li><span class="emoji">✓</span> 如何用 NotebookLM 蒐集和整理資料</li>
+                <li><span class="emoji">✓</span> 如何用 Gemini AI 生成遊戲內容（故事、角色）</li>
+                <li><span class="emoji">✓</span> 如何設計遊戲引擎和屬性系統</li>
+                <li><span class="emoji">✓</span> 如何用 React 實現遊戲前端</li>
+                <li><span class="emoji">✓</span> 如何用提示詞生成高質量圖片</li>
+                <li><span class="emoji">✓</span> 如何部署遊戲到 GitHub Pages</li>
+            </ul>
+            <div class="highlight">
+                <strong>💡 重點：</strong>這些都是實用的 AI 工具，完全免費！
+            </div>
+        </div>
+
+        <!-- AI 工具介紹 -->
+        <div class="slide">
+            <h1>🤖 主要 AI 工具</h1>
+            <div class="grid-2">
+                <div>
+                    <h3>📝 NotebookLM</h3>
+                    <p>蒐集、整理、分析資料</p>
+                    <p>生成大綱和 Podcast</p>
+                </div>
+                <div>
+                    <h3>✨ Gemini</h3>
+                    <p>生成遊戲故事和角色</p>
+                    <p>提示詞工程實踐</p>
+                </div>
+                <div>
+                    <h3>🎨 圖片生成 AI</h3>
+                    <p>生成角色和場景圖片</p>
+                    <p>DALL-E / Midjourney</p>
+                </div>
+                <div>
+                    <h3>💻 GitHub + Vercel</h3>
+                    <p>版本控制和自動部署</p>
+                    <p>免費託管你的遊戲</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 遊戲架構 -->
+        <div class="slide">
+            <h1>🏗️ 遊戲核心架構</h1>
+            <h2>4 個關鍵組件：</h2>
+            <ul>
+                <li><strong>故事引擎</strong>：管理故事節點和分支</li>
+                <li><strong>屬性系統</strong>：6 維屬性追蹤（創意力、分析力、領導力、同理心、勇氣、好奇心）</li>
+                <li><strong>角色導師</strong>：11 位真實導師的故事和互動</li>
+                <li><strong>結果生成</strong>：AI 分析屬性並推薦科系</li>
+            </ul>
+            <div class="highlight">
+                <strong>💎 你將得到：</strong>一個完整的教育遊戲，幫助學生探索升學方向
+            </div>
+        </div>
+
+        <!-- 4 週製作計畫 -->
+        <div class="slide">
+            <h1>📅 4 週完整製作計畫</h1>
+            <h2>Week 1: 計劃與資料蒐集</h2>
+            <ul>
+                <li>定義遊戲概念和目標族群</li>
+                <li>蒐集 11 位導師的真實故事</li>
+                <li>用 NotebookLM 整理資料</li>
+            </ul>
+            <h2>Week 2: 內容生成</h2>
+            <ul>
+                <li>用 Gemini 生成導師設定</li>
+                <li>生成故事分支（50+ 個選擇點）</li>
+                <li>建立 JSON 格式的故事數據</li>
+            </ul>
+        </div>
+
+        <!-- Week 3-4 -->
+        <div class="slide">
+            <h1>📅 Week 3-4: 開發與發布</h1>
+            <h2>Week 3: 技術實現</h2>
+            <ul>
+                <li>搭建 React 專案</li>
+                <li>實現故事引擎和屬性系統</li>
+                <li>製作屬性雷達圖</li>
+                <li>全面測試</li>
+            </ul>
+            <h2>Week 4: 完善與發布</h2>
+            <ul>
+                <li>根據測試反饋調整</li>
+                <li>生成高質量圖片和音樂</li>
+                <li>部署到 GitHub Pages</li>
+            </ul>
+        </div>
+
+        <!-- 故事設計 -->
+        <div class="slide">
+            <h1>📖 故事設計重點</h1>
+            <h2>好的故事選擇特徵：</h2>
+            <ul>
+                <li><span class="emoji">✓</span> 反映不同的人格和價值觀</li>
+                <li><span class="emoji">✓</span> 有真實且邏輯合理的後果</li>
+                <li><span class="emoji">✓</span> 沒有明顯的「正確答案」</li>
+                <li><span class="emoji">✓</span> 影響最終的屬性和結果</li>
+            </ul>
+            <div class="highlight">
+                <strong>📌 範例：</strong><br>
+                ❌ 選項 A: 努力學習 (+5 分析力)<br>
+                ❌ 選項 B: 努力學習 (+4 分析力)<br>
+                ✅ 選項 A: 冒險嘗試 (+5 創意力、+7 勇氣、-2 分析力)<br>
+                ✅ 選項 B: 使用已驗證方案 (+5 分析力、+3 領導力)
+            </div>
+        </div>
+
+        <!-- 提示詞工程 -->
+        <div class="slide">
+            <h1>🎯 提示詞工程關鍵</h1>
+            <h2>高質量提示詞的三要素：</h2>
+            <ul>
+                <li><strong>背景信息：</strong>告訴 AI 你的身份和任務背景</li>
+                <li><strong>具體任務：</strong>明確說明要做什麼</li>
+                <li><strong>詳細要求：</strong>指定輸出格式、風格、限制條件</li>
+            </ul>
+            <div class="highlight">
+                <strong>💡 微調技巧：</strong><br>
+                1️⃣ 加入具體數據（年齡、經驗年數）<br>
+                2️⃣ 提供風格參考或反面例子<br>
+                3️⃣ 指定輸出格式（JSON、Markdown 等）
+            </div>
+        </div>
+
+        <!-- 圖片生成 -->
+        <div class="slide">
+            <h1>🎨 AI 圖片生成策略</h1>
+            <h2>最佳實踐：</h2>
+            <ul>
+                <li><strong>❌ 不要：</strong>邊做邊生成（浪費時間）</li>
+                <li><strong>✅ 要：</strong>故事 90% 完成後集中生成</li>
+            </ul>
+            <h2>生成順序：</h2>
+            <ol>
+                <li>完成所有故事和角色設定</li>
+                <li>確定最終敘事和設計</li>
+                <li>一次性生成所有圖片提示詞</li>
+                <li>批量生成圖片</li>
+            </ol>
+            <div class="highlight">
+                <strong>⏱️ 時間節省：</strong>整個圖片生成階段只需 2-3 小時
+            </div>
+        </div>
+
+        <!-- 技術實現 -->
+        <div class="slide">
+            <h1>💻 技術實現要點</h1>
+            <h2>推薦技術棧：</h2>
+            <ul>
+                <li><strong>前端：</strong>React 19 + TypeScript</li>
+                <li><strong>樣式：</strong>Tailwind CSS</li>
+                <li><strong>圖表：</strong>Recharts（屬性雷達圖）</li>
+                <li><strong>AI：</strong>Gemini API（免費）</li>
+                <li><strong>部署：</strong>Vercel（自動部署）</li>
+            </ul>
+            <div class="highlight">
+                <strong>📈 代碼量估算：</strong><br>
+                MVP 版本：500-800 行<br>
+                完整版本：2000+ 行<br>
+                都在 1 人 3-4 週內完成！
+            </div>
+        </div>
+
+        <!-- 測試與優化 -->
+        <div class="slide">
+            <h1>✅ 測試與優化</h1>
+            <h2>測試檢查清單：</h2>
+            <ul>
+                <li>功能測試（所有故事和選擇都能運作）</li>
+                <li>內容測試（故事是否有趣、邏輯是否合理）</li>
+                <li>UI/UX 測試（是否易於使用）</li>
+                <li>兼容性測試（手機、平板、桌面）</li>
+            </ul>
+            <h2>最常見的改進：</h2>
+            <ul>
+                <li>「故事太短」→ 增加更多分支</li>
+                <li>「選擇感不強」→ 讓不同選擇產生不同結果</li>
+                <li>「屬性不明顯」→ 選擇後立即顯示變化</li>
+            </ul>
+        </div>
+
+        <!-- 發布與分享 -->
+        <div class="slide">
+            <h1>🚀 發布與分享</h1>
+            <h2>部署步驟（3 步）：</h2>
+            <ol>
+                <li>推送到 GitHub</li>
+                <li>連接 Vercel 帳戶</li>
+                <li>點擊 Deploy（自動完成！）</li>
+            </ol>
+            <h2>分享方式：</h2>
+            <ul>
+                <li>📎 直接連結</li>
+                <li>📱 QR Code</li>
+                <li>📧 郵件、社群媒體</li>
+                <li>🏫 學校推廣</li>
+            </ul>
+            <div class="highlight">
+                <strong>💡 進階方向：</strong>添加更多導師、故事、功能，甚至發佈到 App Store！
+            </div>
+        </div>
+
+        <!-- 課程總結 -->
+        <div class="slide cover-slide">
+            <h1>🎉 課程總結</h1>
+            <p>你現在已經擁有：</p>
+            <div class="subtitle">
+                <p>✅ 完整的遊戲設計知識</p>
+                <p>✅ 實用的 AI 工具應用技能</p>
+                <p>✅ 可展示的作品集</p>
+                <p>✅ 可分享的教學材料</p>
+            </div>
+            <p style="margin-top: 60px; font-size: 24px;">
+                <strong>立即開始你的遊戲製作之旅！</strong>
+            </p>
+        </div>
+
+        <!-- 控制區 -->
+        <div class="controls">
+            <button onclick="previousSlide()">⬅️ 上一頁</button>
+            <button onclick="nextSlide()">下一頁 ➡️</button>
+            <div class="slide-counter">
+                <span id="current">1</span> / <span id="total">12</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('total').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+            document.getElementById('current').textContent = n + 1;
+
+            // 鍵盤導航
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'ArrowLeft') previousSlide();
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        showSlide(0);
+    </script>
+</body>
+</html>
