@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 1️⃣ - AI 工具全介紹</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            z-index: 10000;
+        }
+
+        .nav-title {
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .slide-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 80px auto 0;
+            padding-bottom: 40px;
+        }
+
+        .slide {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 48px;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 36px;
+            margin: 30px 0 20px;
+            border-left: 5px solid #764ba2;
+            padding-left: 20px;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 24px;
+            margin: 25px 0 15px;
+        }
+
+        p, li {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 15px;
+            color: #333;
+            overflow-x: auto;
+        }
+
+        .tip-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #0d47a1;
+        }
+
+        .prompt-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #856404;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #155724;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .grid-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+        }
+
+        .grid-item h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: white;
+        }
+
+        .footer-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .footer-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="nav-title">Part 1️⃣ - AI 工具全介紹</div>
+        <div class="nav-buttons">
+            <a href="index-main.html" class="nav-btn">← 返回列表</a>
+            <a href="teaching-part-2.html" class="nav-btn">下一章 →</a>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <!-- 開頭 -->
+        <div class="slide">
+            <h1>🤖 Part 1️⃣ - AI 工具全介紹</h1>
+            <p style="font-size: 20px; color: #666; margin-top: 30px;">
+                在這個 Part，你將學習如何使用 4 個主要 AI 工具快速完成遊戲製作：
+            </p>
+            <div class="grid" style="margin-top: 40px;">
+                <div class="grid-item">
+                    <h4>📝 NotebookLM</h4>
+                    <p>資料蒐集與整理</p>
+                </div>
+                <div class="grid-item">
+                    <h4>✨ Gemini</h4>
+                    <p>內容生成與設計</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🎨 圖片生成</h4>
+                    <p>視覺資產製作</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🚀 GitHub/Vercel</h4>
+                    <p>版本控制與部署</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NotebookLM -->
+        <div class="slide">
+            <h2>📝 工具 1：NotebookLM - 資料蒐集與整理</h2>
+
+            <h3>什麼是 NotebookLM？</h3>
+            <p>Google 推出的 AI 筆記應用，可以幫助你：</p>
+            <ul>
+                <li>上傳各種資料（PDF、網址、影片等）</li>
+                <li>自動提取關鍵資訊</li>
+                <li>生成學習指南和 Podcast</li>
+                <li>快速整理複雜資訊</li>
+            </ul>
+
+            <h3>遊戲製作中的用途</h3>
+            <ul>
+                <li>蒐集 11 位導師的真實故事背景</li>
+                <li>整理大學科系資訊</li>
+                <li>生成故事框架和大綱</li>
+                <li>快速學習遊戲設計基礎</li>
+            </ul>
+
+            <h3>使用步驟</h3>
+            <div class="tip-box">
+                <strong>📌 Step 1：創建新 Notebook</strong><br>
+                進入 notebooklm.google.com，點擊「Create」建立新筆記本
+            </div>
+
+            <div class="tip-box">
+                <strong>📌 Step 2：上傳資料</strong><br>
+                上傳你蒐集的導師故事、科系介紹等資料
+            </div>
+
+            <div class="tip-box">
+                <strong>📌 Step 3：與 AI 對話</strong><br>
+                在「Chat」中提問，AI 會根據資料回答
+            </div>
+
+            <div class="prompt-box">
+                <strong>💡 提示詞範例：</strong><br>
+                <code>根據這些資料，總結這位導師的核心特質和故事重點，用 300 字內簡述。</code>
+            </div>
+        </div>
+
+        <!-- Gemini -->
+        <div class="slide">
+            <h2>✨ 工具 2：Gemini - 內容生成與設計</h2>
+
+            <h3>什麼是 Gemini？</h3>
+            <p>Google 最新的 AI 模型，功能強大且免費版就很夠用：</p>
+            <ul>
+                <li>生成故事和對話文本</li>
+                <li>創建人物設定和背景</li>
+                <li>處理複雜的邏輯和設計問題</li>
+                <li>提供創意建議和優化方案</li>
+            </ul>
+
+            <h3>遊戲製作中的用途</h3>
+            <ul>
+                <li>生成 11 位導師的性格設定</li>
+                <li>編寫 50+ 個故事選擇點</li>
+                <li>生成結果描述和升學建議</li>
+                <li>優化遊戲流程和故事邏輯</li>
+            </ul>
+
+            <h3>關鍵提示詞範例</h3>
+
+            <div class="prompt-box">
+                <strong>提示詞 1：角色設定生成</strong>
+                <div class="code-block">我需要為一款大學升學探索遊戲創建 11 位導師角色。
+這位導師是一位：
+- 職業：創業家
+- 性格特徵：創新、熱血、追求自由
+- 故事背景：從失敗中學習
+
+請為這位導師生成：
+1. 300 字的角色背景故事
+2. 3 句代表性台詞
+3. 與他互動時的遊戲故事選擇點（3 個選項）
+4. 這位導師對應的 6 維屬性變化</div>
+            </div>
+
+            <div class="prompt-box">
+                <strong>提示詞 2：故事選擇點生成</strong>
+                <div class="code-block">為一個教育遊戲場景生成 5 個有趣的故事選擇點。
+背景：一位學生正在與創業家導師討論未來方向
+要求：
+- 選擇應該沒有明顯的「正確答案」
+- 每個選擇應該反映不同的人生價值觀
+- 選擇會影響後續的屬性（創意力、分析力、領導力、同理心、勇氣、好奇心）
+- 格式：JSON 陣列</div>
+            </div>
+        </div>
+
+        <!-- 圖片生成 -->
+        <div class="slide">
+            <h2>🎨 工具 3：圖片生成 - 視覺資產製作</h2>
+
+            <h3>可用的圖片生成工具</h3>
+            <div class="grid">
+                <div class="grid-item">
+                    <h4>🟢 Gemini (免費)</h4>
+                    <p>內置生成能力，適合快速原型</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🎨 DALL-E 3</h4>
+                    <p>高質量，需付費</p>
+                </div>
+                <div class="grid-item">
+                    <h4>🌈 Midjourney</h4>
+                    <p>最高質量，需訂閱</p>
+                </div>
+            </div>
+
+            <h3>遊戲所需圖片類型</h3>
+            <ul>
+                <li><strong>角色圖：</strong> 11 位導師的肖像</li>
+                <li><strong>場景圖：</strong> 互動場景的背景</li>
+                <li><strong>UI 圖：</strong> 按鈕、圖示、裝飾</li>
+                <li><strong>結果圖：</strong> 最終升學結果的插圖</li>
+            </ul>
+
+            <h3>圖片生成提示詞最佳實踐</h3>
+
+            <div class="prompt-box">
+                <strong>提示詞 3：角色圖片生成</strong>
+                <div class="code-block">a professional portrait of a 45-year-old female entrepreneur,
+Asian, warm smile, wearing business casual attire,
+modern office background, soft studio lighting,
+warm color palette, professional photography style,
+character design for educational game</div>
+            </div>
+
+            <div class="prompt-box">
+                <strong>提示詞 4：場景背景生成</strong>
+                <div class="code-block">modern university campus at sunset,
+student sitting on bench talking to mentor,
+warm golden hour lighting,
+vibrant colors, illustrative style,
+inspiring and motivational atmosphere</div>
+            </div>
+
+            <div class="success-box">
+                <strong>💡 提示：</strong> 圖片生成提示詞應該用英文，並且要指定風格、角度、光線、配色等細節。
+            </div>
+        </div>
+
+        <!-- GitHub & Vercel -->
+        <div class="slide">
+            <h2>🚀 工具 4：GitHub & Vercel - 版本控制與部署</h2>
+
+            <h3>為什麼需要 GitHub？</h3>
+            <ul>
+                <li>版本控制：記錄每次改動</li>
+                <li>團隊協作：多人共同開發</li>
+                <li>備份：所有代碼都在雲端</li>
+                <li>展示作品：GitHub 是開發者的作品集</li>
+            </ul>
+
+            <h3>為什麼需要 Vercel？</h3>
+            <ul>
+                <li>一鍵部署：GitHub Push 自動上線</li>
+                <li>免費託管：完全免費</li>
+                <li>高速訪問：全球 CDN</li>
+                <li>自動 SSL：安全連接</li>
+            </ul>
+
+            <h3>GitHub 工作流程</h3>
+            <div class="code-block">
+# Step 1: 克隆倉庫
+git clone https://github.com/你的用戶名/college-major-discovery-game.git
+
+# Step 2: 創建新分支
+git checkout -b feature/add-new-story
+
+# Step 3: 進行更改
+# 編輯檔案...
+
+# Step 4: 提交更改
+git add .
+git commit -m "Add new story content"
+
+# Step 5: 推送到遠端
+git push origin feature/add-new-story
+
+# Step 6: 創建 Pull Request
+# 在 GitHub 網頁上創建 PR
+            </div>
+
+            <h3>Vercel 部署步驟</h3>
+            <div class="tip-box">
+                <strong>1️⃣</strong> 登入 vercel.com<br>
+                <strong>2️⃣</strong> 導入 GitHub 倉庫<br>
+                <strong>3️⃣</strong> 選擇項目設置<br>
+                <strong>4️⃣</strong> 點擊「Deploy」<br>
+                <strong>完成！</strong> 遊戲已上線
+            </div>
+        </div>
+
+        <!-- 四個工具的整合 -->
+        <div class="slide">
+            <h2>🔄 四個工具的整合工作流程</h2>
+
+            <h3>完整製作流程</h3>
+            <div class="success-box" style="margin-top: 30px;">
+                <strong>Step 1: NotebookLM (資料準備)</strong><br>
+                蒐集導師故事 → 整理資訊 → 提取關鍵點
+            </div>
+
+            <div class="success-box">
+                <strong>Step 2: Gemini (內容生成)</strong><br>
+                生成故事 → 創建選擇點 → 設計結果文案
+            </div>
+
+            <div class="success-box">
+                <strong>Step 3: 圖片生成 (視覺製作)</strong><br>
+                生成角色圖 → 製作場景背景 → 設計 UI 元素
+            </div>
+
+            <div class="success-box">
+                <strong>Step 4: GitHub & Vercel (發佈上線)</strong><br>
+                提交代碼 → 推送到 GitHub → Vercel 自動部署 → 遊戲上線！
+            </div>
+
+            <h3>預計時間</h3>
+            <ul>
+                <li>資料蒐集和整理：2-3 小時</li>
+                <li>內容生成：3-4 小時</li>
+                <li>圖片製作：2-3 小時</li>
+                <li>部署和優化：1-2 小時</li>
+            </ul>
+        </div>
+
+        <!-- 常見問題 -->
+        <div class="slide">
+            <h2>❓ 常見問題</h2>
+
+            <h3>Q1: Gemini 免費版夠用嗎？</h3>
+            <p>A: 完全夠用！免費版可以生成足夠的內容。只有在需要大量快速生成時才需要付費。</p>
+
+            <h3>Q2: 沒有 GitHub 經驗可以嗎？</h3>
+            <p>A: 可以！基本操作很簡單。我們後面會詳細講解。</p>
+
+            <h3>Q3: 圖片生成需要付費嗎？</h3>
+            <p>A: Gemini 免費，但質量有限。DALL-E 需要積點，Midjourney 需要訂閱。建議先用 Gemini 原型。</p>
+
+            <h3>Q4: 多久能完成一款遊戲？</h3>
+            <p>A: 按照四步驟流程，一個完整的遊戲可以在 2-3 周內完成（每週 5-10 小時）。</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="index-main.html" class="footer-btn">← 返回目錄</a>
+        <a href="teaching-part-2.html" class="footer-btn">下一章：Part 2 →</a>
+    </div>
+</body>
+</html>

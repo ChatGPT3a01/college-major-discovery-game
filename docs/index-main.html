@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 AI 驅動的 RPG 遊戲製作 - 完整教學系列</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-weight: 800;
+        }
+
+        .header p {
+            font-size: 24px;
+            opacity: 0.95;
+            margin-bottom: 15px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            opacity: 0.85;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+            cursor: pointer;
+            border-left: 5px solid #667eea;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+        .card:nth-child(7) { animation-delay: 0.7s; }
+        .card:nth-child(8) { animation-delay: 0.8s; }
+        .card:nth-child(9) { animation-delay: 0.9s; }
+        .card:nth-child(10) { animation-delay: 1s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            border-left-color: #764ba2;
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card h3 {
+            color: #667eea;
+            font-size: 22px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .card-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .card-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 AI 驅動的 RPG 遊戲製作</h1>
+            <p>完整教學系列</p>
+            <p class="subtitle">四步驟完成完整專案製作 - 10 個詳細教學 Part</p>
+        </div>
+
+        <div class="grid">
+            <a href="teaching-part-1.html" style="text-decoration: none;">
+                <div class="card">
+                    <span class="card-icon">🤖</span>
+                    <h3>Part 1️⃣</h3>
+                    <p><strong>AI 工具全介紹</strong></p>
+                    <p style="font-size: 14px; color: #999;">NotebookLM、Gemini、圖片生成、GitHub/Vercel</p>
+                    <span class="card-link">進入 →</span>
+                </div>
+            </a>
+
+            <a href="teaching-part-2.html" style="text-decoration: none;">
+                <div class="card">
+                    <span class="card-icon">📖</span>
+                    <h3>Part 2️⃣</h3>
+                    <p><strong>故事設計與提示詞工程</strong></p>
+                    <p style="font-size: 14px; color: #999;">50+ 選擇點、故事提示詞、最佳實踐</p>
+                    <span class="card-link">進入 →</span>
+                </div>
+            </a>
+
+            <a href="teaching-part-3.html" style="text-decoration: none;">
+                <div class="card">
+                    <span class="card-icon">👨‍🏫</span>
+                    <h3>Part 3️⃣</h3>
+                    <p><strong>角色導師設定</strong></p>
+                    <p style="font-size: 14px; color: #999;">11 位導師、性格設定、提示詞範例</p>
+                    <span class="card-link">進入 →</span>
+                </div>
+            </a>
+
+            <a href="teaching-part-4.html" style="text-decoration: none;">
+                <div class="card">
+                    <span class="card-icon">📊</span>
+                    <h3>Part 4️⃣</h3>
+                    <p><strong>屬性系統設計</strong></p>
+                    <p style="font-size: 14px; color: #999;">6 維屬性、計算邏輯、雷達圖實現</p>
+                    <span class="card-link">進入 →</span>
+                </div>
+            </a>
+
+            <a href="teaching-part-5.html" style="text-decoration: none;">
+                <div class="card">
+                    <span class="card-icon">🎨</span>
+                    <h3>Part 5️⃣</h3>
+                    <p><strong>圖片生成策略</strong></p>
+                    <p style="font-size: 14px; color: #999;">圖片提示詞、風格統一、工作流程</p>
+                    <span class="card-link">進入 →</span>
+                </div>
+            </a>
+
+            <a href="teaching-part-6.html" style="text-decoration: none;">
+                <div class="card">
+                    <span class="card-icon">✨</span>
+                    <h3>Part 6️⃣</h3>
+                    <p><strong>AI 結果生成</strong></p>
+                    <p style="font-size: 14px; color: #999;">結果描述、升學建議、圖像提示詞</p>
+                    <span class="card-link">進入 →</span>
+                </div>
+            </a>
+
+            <a href="teaching-part-7.html" style="text-decoration: none;">
+                <div class="card">
+                    <span class="card-icon">💻</span>
+                    <h3>Part 7️⃣</h3>
+                    <p><strong>React 技術實現</strong></p>
+                    <p style="font-size: 14px; color: #999;">遊戲架構、故事引擎、代碼示例</p>
+                    <span class="card-link">進入 →</span>
+                </div>
+            </a>
+
+            <a href="teaching-part-8.html" style="text-decoration: none;">
+                <div class="card">
+                    <span class="card-icon">🔄</span>
+                    <h3>Part 8️⃣</h3>
+                    <p><strong>完整工作流程演示</strong></p>
+                    <p style="font-size: 14px; color: #999;">需求到上線、時間規劃、避免坑點</p>
+                    <span class="card-link">進入 →</span>
+                </div>
+            </a>
+
+            <a href="teaching-part-9.html" style="text-decoration: none;">
+                <div class="card">
+                    <span class="card-icon">📚</span>
+                    <h3>Part 9️⃣</h3>
+                    <p><strong>提示詞庫大全</strong></p>
+                    <p style="font-size: 14px; color: #999;">所有提示詞集合、分類、可複製使用</p>
+                    <span class="card-link">進入 →</span>
+                </div>
+            </a>
+
+            <a href="teaching-part-10.html" style="text-decoration: none;">
+                <div class="card">
+                    <span class="card-icon">🎯</span>
+                    <h3>Part 🔟</h3>
+                    <p><strong>課堂練習與進階</strong></p>
+                    <p style="font-size: 14px; color: #999;">實戰練習、作業指引、優化方向</p>
+                    <span class="card-link">進入 →</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>🎓 AI 驅動的 RPG 遊戲製作 - 完整教學系列</p>
+            <p style="font-size: 14px; opacity: 0.8;">由阿亮老師（曾慶良主任）精心製作</p>
+            <a href="index.html" class="back-link">← 返回遊戲</a>
+        </div>
+    </div>
+</body>
+</html>
