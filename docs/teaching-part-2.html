@@ -12,59 +12,80 @@
         .nav-buttons { display: flex; gap: 15px; }
         .nav-btn { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-weight: 600; transition: all 0.3s; }
         .nav-btn:hover { background: rgba(255,255,255,0.4); }
-        .slide-container { max-width: 1400px; margin: 80px auto 0; padding-bottom: 40px; }
-        .slide { background: rgba(255,255,255,0.98); border-radius: 20px; padding: 50px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+
+        /* 左右翻頁導航 */
+        .nav-arrow { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.25); color: white; width: 60px; height: 60px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.4); font-size: 24px; cursor: pointer; z-index: 9000; transition: all 0.3s; display: flex; align-items: center; justify-content: center; pointer-events: auto; }
+        .nav-arrow:hover { background: rgba(255,255,255,0.5); transform: translateY(-50%) scale(1.1); }
+        .prev-arrow { left: 30px; }
+        .next-arrow { right: 30px; }
+        .nav-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        /* 頁碼指示器 */
+        .indicators { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 4000; padding: 10px 25px; background: rgba(0,0,0,0.3); border-radius: 30px; backdrop-filter: blur(5px); }
+        .dot { width: 12px; height: 12px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: all 0.3s; }
+        .dot.active { background: #4facfe; transform: scale(1.3); }
+
+        .slide-container { width: 100%; height: 100vh; padding-top: 60px; position: relative; }
+        .slide { position: absolute; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px); display: none; align-items: center; justify-content: center; padding: 40px; opacity: 0; transition: opacity 0.4s ease; z-index: 10; }
+        .slide.active { display: flex; opacity: 1; z-index: 20; }
+        .slide-content { background: rgba(255, 255, 255, 0.98); border-radius: 24px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); padding: 60px; max-width: 1400px; width: 95%; max-height: 88vh; overflow-y: auto; position: relative; pointer-events: auto; }
+
         h1 { color: #667eea; font-size: 48px; margin-bottom: 30px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
         h2 { color: #667eea; font-size: 36px; margin: 30px 0 20px; border-left: 5px solid #764ba2; padding-left: 20px; }
         h3 { color: #764ba2; font-size: 24px; margin: 25px 0 15px; }
         p, li { font-size: 18px; line-height: 1.8; color: #444; margin-bottom: 15px; }
         .code-block { background: #f5f5f5; border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; border-radius: 8px; font-family: monospace; font-size: 14px; overflow-x: auto; }
         .prompt-box { background: #fff3cd; border-left: 5px solid #ffc107; padding: 20px; margin: 20px 0; border-radius: 8px; }
-        .footer { text-align: center; margin-top: 40px; padding: 20px; color: white; }
-        .footer-btn { display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; margin: 0 10px; }
+        .next-link { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 30px; border-radius: 25px; text-decoration: none; font-weight: 600; margin-top: 30px; transition: all 0.3s; }
+        .next-link:hover { transform: scale(1.05); }
     </style>
 </head>
 <body>
     <div class="nav-bar">
         <div class="nav-title">Part 2️⃣ - 故事設計與提示詞工程</div>
         <div class="nav-buttons">
-            <a href="index-main.html" class="nav-btn">← 返回</a>
-            <a href="teaching-part-3.html" class="nav-btn">下一章 →</a>
+            <button class="nav-btn" onclick="goToSlide(0)">🏠 首頁</button>
+            <a href="index-main.html" class="nav-btn">← 返回目錄</a>
         </div>
     </div>
 
     <div class="slide-container">
-        <div class="slide">
-            <h1>📖 Part 2️⃣ - 故事設計與提示詞工程</h1>
-            <p>在這個 Part，你將學習如何設計引人入勝的故事，以及如何用提示詞讓 AI 生成高質量的故事內容。</p>
+        <div class="slide active">
+            <div class="slide-content">
+                <h1>📖 Part 2️⃣ - 故事設計與提示詞工程</h1>
+                <p>在這個 Part，你將學習如何設計引人入勝的故事，以及如何用提示詞讓 AI 生成高質量的故事內容。</p>
+            </div>
         </div>
 
         <div class="slide">
-            <h2>📚 故事框架設計</h2>
-            <h3>遊戲的故事結構</h3>
-            <p>本遊戲有 50+ 個故事選擇點，分為：</p>
-            <ul>
-                <li><strong>導師故事：</strong> 11 位導師，每位 4-5 個互動點</li>
-                <li><strong>選擇分支：</strong> 每個選擇點有 3-4 個選項</li>
-                <li><strong>屬性影響：</strong> 每個選擇改變 1-2 個屬性</li>
-                <li><strong>結果生成：</strong> 根據最終屬性推薦科系</li>
-            </ul>
+            <div class="slide-content">
+                <h2>📚 故事框架設計</h2>
+                <h3>遊戲的故事結構</h3>
+                <p>本遊戲有 50+ 個故事選擇點，分為：</p>
+                <ul>
+                    <li><strong>導師故事：</strong> 11 位導師，每位 4-5 個互動點</li>
+                    <li><strong>選擇分支：</strong> 每個選擇點有 3-4 個選項</li>
+                    <li><strong>屬性影響：</strong> 每個選擇改變 1-2 個屬性</li>
+                    <li><strong>結果生成：</strong> 根據最終屬性推薦科系</li>
+                </ul>
 
-            <h3>好的故事選擇點特徵</h3>
-            <ul>
-                <li>✅ 沒有明顯的「正確答案」</li>
-                <li>✅ 反映不同的人生價值觀</li>
-                <li>✅ 後果邏輯合理</li>
-                <li>✅ 對最終結果有實際影響</li>
-            </ul>
+                <h3>好的故事選擇點特徵</h3>
+                <ul>
+                    <li>✅ 沒有明顯的「正確答案」</li>
+                    <li>✅ 反映不同的人生價值觀</li>
+                    <li>✅ 後果邏輯合理</li>
+                    <li>✅ 對最終結果有實際影響</li>
+                </ul>
+            </div>
         </div>
 
         <div class="slide">
-            <h2>🎯 提示詞工程最佳實踐</h2>
+            <div class="slide-content">
+                <h2>🎯 提示詞工程最佳實踐</h2>
 
-            <div class="prompt-box">
-                <strong>提示詞 5：完整故事場景生成</strong>
-                <div class="code-block">我正在製作一款大學升學探索遊戲。我需要為一個故事場景生成內容。
+                <div class="prompt-box">
+                    <strong>提示詞 5：完整故事場景生成</strong>
+                    <div class="code-block">我正在製作一款大學升學探索遊戲。我需要為一個故事場景生成內容。
 
 【場景背景】
 - 導師：創業家（創新、熱血、冒險精神）
@@ -79,11 +100,11 @@
 4. 選擇應該沒有明顯的對錯，而是不同的價值觀
 
 【輸出格式】JSON</div>
-            </div>
+                </div>
 
-            <div class="prompt-box">
-                <strong>提示詞 6：批量生成多個選擇點</strong>
-                <div class="code-block">為我生成 10 個故事選擇點。每個選擇點包括：
+                <div class="prompt-box">
+                    <strong>提示詞 6：批量生成多個選擇點</strong>
+                    <div class="code-block">為我生成 10 個故事選擇點。每個選擇點包括：
 - 場景描述（100字）
 - 3 個選項，每個選項 20-30 字
 - 每個選項的屬性變化
@@ -93,35 +114,105 @@
 - 選擇應該讓學生思考自己的價值觀
 - 沒有明顯的「最好」選項
 - 屬性變化應該合理且有邏輯</div>
+                </div>
             </div>
         </div>
 
         <div class="slide">
-            <h2>✍️ 故事撰寫步驟</h2>
-            <ul>
-                <li><strong>Step 1：</strong> 確定每位導師的核心特質</li>
-                <li><strong>Step 2：</strong> 規劃 5 個關鍵故事場景</li>
-                <li><strong>Step 3：</strong> 用提示詞生成初稿</li>
-                <li><strong>Step 4：</strong> 人工審核和優化</li>
-                <li><strong>Step 5：</strong> 測試屬性邏輯是否平衡</li>
-            </ul>
+            <div class="slide-content">
+                <h2>✍️ 故事撰寫步驟</h2>
+                <ul>
+                    <li><strong>Step 1：</strong> 確定每位導師的核心特質</li>
+                    <li><strong>Step 2：</strong> 規劃 5 個關鍵故事場景</li>
+                    <li><strong>Step 3：</strong> 用提示詞生成初稿</li>
+                    <li><strong>Step 4：</strong> 人工審核和優化</li>
+                    <li><strong>Step 5：</strong> 測試屬性邏輯是否平衡</li>
+                </ul>
+            </div>
         </div>
 
         <div class="slide">
-            <h2>💡 常見的故事錯誤</h2>
-            <ul>
-                <li>❌ 所有選擇都導向相同結果</li>
-                <li>❌ 有明顯的「正確答案」</li>
-                <li>❌ 選擇文案過於相似</li>
-                <li>❌ 屬性變化不合理</li>
-                <li>❌ 故事背景不一致</li>
-            </ul>
+            <div class="slide-content">
+                <h2>💡 常見的故事錯誤</h2>
+                <ul>
+                    <li>❌ 所有選擇都導向相同結果</li>
+                    <li>❌ 有明顯的「正確答案」</li>
+                    <li>❌ 選擇文案過於相似</li>
+                    <li>❌ 屬性變化不合理</li>
+                    <li>❌ 故事背景不一致</li>
+                </ul>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="teaching-part-3.html" class="next-link">📚 下一章：Part 3 角色導師設定 →</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="footer">
-        <a href="index-main.html" class="footer-btn">← 返回目錄</a>
-        <a href="teaching-part-3.html" class="footer-btn">下一章：Part 3 →</a>
-    </div>
+    <!-- 導航箭頭 -->
+    <button class="nav-arrow prev-arrow" id="prevBtn" onclick="changeSlide(-1)">❮</button>
+    <button class="nav-arrow next-arrow" id="nextBtn" onclick="changeSlide(1)">❯</button>
+
+    <!-- 頁碼指示器 -->
+    <div class="indicators" id="indicatorContainer"></div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function init() {
+            createIndicators();
+            showSlide(0);
+            updateButtons();
+            document.addEventListener('keydown', handleKeydown);
+        }
+
+        function handleKeydown(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        }
+
+        function createIndicators() {
+            const container = document.getElementById('indicatorContainer');
+            container.innerHTML = '';
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.onclick = () => goToSlide(index);
+                container.appendChild(dot);
+            });
+        }
+
+        function showSlide(index) {
+            if (index < 0) index = 0;
+            if (index >= totalSlides) index = totalSlides - 1;
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            currentSlide = index;
+
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === index);
+            });
+
+            updateButtons();
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        init();
+    </script>
 </body>
 </html>
