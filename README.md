@@ -23,7 +23,7 @@
 
 # **[👉 點擊進入線上遊戲 👈](https://chatgpt3a01.github.io/college-major-discovery-game/)**
 
-# **[📚 遊戲教學製作 - 完整教學簡報](https://chatgpt3a01.github.io/college-major-discovery-game/teaching-slides.html)**
+# **[📚 完整教學簡報系列（10 個 Part）](https://chatgpt3a01.github.io/college-major-discovery-game/index-main.html)**
 
 ### 📱 **掃描 QR CODE 立即進入**
 
@@ -378,10 +378,72 @@ Week 3-4：開發實現
 
 ---
 
+## 👨‍🏫 關於作者
+
+<div align="center">
+
+### 曾慶良 主任（阿亮老師）
+
+<table>
+<tr>
+<td width="50%">
+
+**📌 現任職務**
+
+🎓 新興科技推廣中心主任<br>
+🎓 教育部學科中心研究教師<br>
+🎓 臺北市資訊教育輔導員
+
+</td>
+<td width="50%">
+
+**🏆 獲獎紀錄**
+
+🥇 2025年 SETEAM教學專業講師認證<br>
+🥇 2024年 教育部人工智慧講師認證<br>
+🥇 2022、2023年 指導學生XR專題競賽特優
+
+</td>
+</tr>
+</table>
+
+**📞 聯絡方式**
+- 📺 **YouTube**：https://www.youtube.com/@Liang-yt02
+- 👥 **Facebook 社團**：https://www.facebook.com/groups/2754139931432955
+- ✉️ **Email**：3a01chatgpt@gmail.com
+
+</div>
+
+---
+
+## 📜 授權聲明
+
+本專案及相關教學資源由阿亮老師（曾慶良主任）創作，採用以下授權方式：
+
+```
+© 2026 曾慶良（阿亮老師）版權所有
+
+授權對象：阿亮老師課程專用
+使用範圍：教育教學使用
+限制：禁止商業用途、禁止未經授權的修改和發佈
+```
+
+**允許：**
+- ✅ 教育機構用於教學
+- ✅ 學生個人學習
+- ✅ 非營利教育活動
+
+**禁止：**
+- ❌ 商業用途或販售
+- ❌ 未經授權的修改和發佈
+- ❌ 移除版權聲明
+
+---
+
 **開始你的未來探險之旅！** 🚀✨
 
 🎓 回到未來平行宇宙 - 發現屬於你的科系和未來
 
-© 2026 阿亮老師 版權所有
+© 2026 曾慶良（阿亮老師）版權所有
 
 </div>
