@@ -1,6 +1,51 @@
-# 🎓 回到未來平行宇宙 - 大學科系探索遊戲
+<div align="center">
 
-一款創新的 RPG 互動遊戲，幫助高中生探索自己的未來升學方向。透過與 11 位導師的互動故事，發現適合的大學科系。
+# 🎓 回到未來平行宇宙
+
+### 大學科系探索互動 RPG 遊戲
+
+一款創新的 RPG 互動遊戲，幫助高中生探索自己的未來升學方向。<br>透過與 11 位導師的互動故事，發現適合的大學科系。
+
+<br>
+
+[![GitHub](https://img.shields.io/badge/GitHub-ChatGPT3a01-333?style=for-the-badge&logo=github)](https://github.com/ChatGPT3a01/college-major-discovery-game)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![License](https://img.shields.io/badge/授權-阿亮老師課程專用-red?style=for-the-badge)](LICENSE)
+
+</div>
+
+---
+
+## 🚀 **立即開始遊戲！**
+
+<div align="center">
+
+# **[👉 點擊進入線上遊戲 👈](https://chatgpt3a01.github.io/college-major-discovery-game/)**
+
+### 📱 **掃描 QR CODE 立即進入**
+
+<img src="game-qr-code.png" alt="遊戲 QR CODE" width="250" />
+
+| 項目 | 說明 |
+|:---:|:---|
+| 🔐 **遊戲密碼** | `game2026` |
+| ⏱️ **遊玩時間** | 15-20 分鐘 |
+| 🎯 **生成結果** | 屬性雷達圖 + 升學建議 + AI 圖像提示詞 |
+
+</div>
+
+---
+
+### 📋 **快速開始步驟**
+
+1. **點擊上方藍色連結**進入遊戲（無需下載！✨）
+2. **輸入暱稱和密碼**（密碼：`game2026`）
+3. **開始冒險！** 🎮 與 11 位導師互動
+4. **完成遊戲**並生成結果
+5. **複製結果**中的 AI 提示詞到繪圖工具生成圖像
+
+---
 
 ## ✨ 核心特色
 
@@ -64,12 +109,6 @@ AI 分析所有選擇和屬性
 | 標準路線（5-6個導師） | 15-20 分鐘 |
 | 完整冒險（所有導師） | 25-30 分鐘 |
 
-## 🚀 快速開始
-
-1. 打開 `college-major-discovery-game-rpg.html`
-2. 輸入暱稱和密碼：
-   - 遊戲密碼：`game2026`
-3. 開始冒險！
 
 ## 🎵 音樂功能使用
 
@@ -101,8 +140,8 @@ AI 分析所有選擇和屬性
 
 ## 📊 故事導師詳情
 
-| 導師 | 領域 | 相關科系 |
-|------|------|--------|
+| 💼 導師 | 🎯 專業領域 | 📚 相關科系 |
+|:---:|:---|:---|
 | 李成功 | 企業家 | 商業、管理、創業 |
 | 林創意 | 設計師 | 設計、視覺傳達、藝術 |
 | 陳愛心 | 教育工作者 | 教育、社會工作、NGO |
@@ -163,17 +202,80 @@ AI 分析所有選擇和屬性
 
 如果你有改進建議或想要添加新的導師故事，歡迎提出 Issue 或 Pull Request。
 
-## 📄 授權
+---
 
-本專案由 Claude Code 輔助開發。
-適用於教育和非商業用途。
+## 👨‍🏫 關於作者
 
-## 📧 聯絡
+<div align="center">
 
-有任何問題或建議，歡迎提出 Issue。
+### 曾慶良 主任（阿亮老師）
+
+**📌 現任職務**
+- 🎓 新興科技推廣中心主任
+- 🎓 教育部學科中心研究教師
+- 🎓 臺北市資訊教育輔導員
+
+<br>
+
+**🏆 獲獎紀錄**
+- 🥇 2025年 SETEAM教學專業講師認證
+- 🥇 2024年 教育部人工智慧講師認證
+- 🥇 2022、2023年 指導學生XR專題競賽特優
+- 🥇 2022年 VR教材開發教師組特優
+- 🥇 2019年 百大資訊人才獎
+- 🥇 2018、2019年 親子天下創新100教師
+- 🥇 2018年 臺北市特殊優良教師
+- 🥇 2017年 教育部行動學習優等
+
+<br>
+
+### 📞 聯絡方式
+
+[![YouTube](https://img.shields.io/badge/YouTube-@Liang--yt02-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/@Liang-yt02)
+[![Facebook](https://img.shields.io/badge/Facebook-3A科技研究社-blue?style=for-the-badge&logo=facebook)](https://www.facebook.com/groups/2754139931432955)
+[![Email](https://img.shields.io/badge/Email-3a01chatgpt@gmail.com-green?style=for-the-badge&logo=gmail)](mailto:3a01chatgpt@gmail.com)
+
+</div>
+
+---
+
+## 📜 授權聲明
+
+**© 2026 阿亮老師 版權所有**
+
+本專案僅供「阿亮老師課程學員」學習使用。
+
+### ⚠️ 禁止事項
+
+- ❌ 禁止修改本專案內容
+- ❌ 禁止轉傳或散布
+- ❌ 禁止商業使用
+- ❌ 禁止未經授權之任何形式使用
+
+如有任何授權需求，請聯繫作者。
+
+---
+
+<div align="center">
+
+## 🌟 喜歡這個專案嗎？
+
+如果這個工具對您有幫助，請給我們一個 ⭐ Star！
+
+<br>
+
+**Made with ❤️ by 阿亮老師**
+
+<br>
+
+[⬆️ 回到頂部](#-回到未來平行宇宙)
 
 ---
 
 **開始你的未來探險之旅！** 🚀✨
 
 🎓 回到未來平行宇宙 - 發現屬於你的科系和未來
+
+© 2026 阿亮老師 版權所有
+
+</div>

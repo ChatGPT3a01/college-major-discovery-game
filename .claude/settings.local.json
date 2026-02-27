@@ -4,7 +4,11 @@
       "Bash(tail:*)",
       "Bash(cd:*)",
       "Bash(cp:*)",
-      "Bash(cd D:\\\\AI教學與專案實作\\\\專案_學系探索遊戲:*)"
+      "Bash(cd D:\\\\AI教學與專案實作\\\\專案_學系探索遊戲:*)",
+      "Bash(head:*)",
+      "Bash(cd \"/d/college-major-discovery-game\" && npx html-inline dist-bundled/index.html -o college-major-discovery-game-rpg.html 2>&1)",
+      "Bash(cd \"/d/AI教學與專案實作/專案_學系探索遊戲\" && python3 << 'EOF'\nimport subprocess\nimport sys\n\n# 安裝 qrcode 庫（如果還沒安裝）\ntry:\n    import qrcode\nexcept ImportError:\n    subprocess.check_call\\([sys.executable, \"-m\", \"pip\", \"install\", \"qrcode[pil]\", \"-q\"]\\)\n    import qrcode\n\n# 生成 QR CODE\nurl = \"https://chatgpt3a01.github.io/college-major-discovery-game/\"\nqr = qrcode.QRCode\\(\n    version=1,\n    error_correction=qrcode.constants.ERROR_CORRECT_L,\n    box_size=10,\n    border=2,\n\\)\nqr.add_data\\(url\\)\nqr.make\\(fit=True\\)\n\n# 保存為圖片\nimg = qr.make_image\\(fill_color=\"black\", back_color=\"white\"\\)\nimg.save\\(\"game-qr-code.png\"\\)\n\nprint\\(\"✅ QR CODE 生成成功！\"\\)\nprint\\(f\"🔗 掃描此 QR CODE 可進入：{url}\"\\)\nEOF)",
+      "Bash(cd \"/d/AI教學與專案實作/專案_學系探索遊戲\" && npm install qrcode --save-dev 2>&1 | tail -5 && \\\\\nnode << 'EOF'\nconst QRCode = require\\('qrcode'\\);\n\nconst url = 'https://chatgpt3a01.github.io/college-major-discovery-game/';\n\nQRCode.toFile\\('game-qr-code.png', url, {\n  errorCorrectionLevel: 'H',\n  type: 'image/png',\n  width: 300,\n  margin: 2,\n  color: {\n    dark: '#000000',\n    light: '#FFFFFF'\n  }\n}, function \\(err\\) {\n  if \\(err\\) throw err;\n  console.log\\('✅ QR CODE 生成成功！'\\);\n  console.log\\('🔗 掃描此 QR CODE 可進入遊戲'\\);\n}\\);\nEOF)"
     ]
   }
 }
