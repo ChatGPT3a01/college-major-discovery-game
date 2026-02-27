@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 9️⃣ - 提示詞庫大全</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft JhengHei', 'Segoe UI', Arial; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .nav-bar { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 10000; }
+        .nav-title { color: white; font-size: 18px; font-weight: 700; }
+        .nav-btn { background: rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; }
+        .slide-container { max-width: 1400px; margin: 80px auto 0; padding-bottom: 40px; }
+        .slide { background: rgba(255,255,255,0.98); border-radius: 20px; padding: 50px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        h1 { color: #667eea; font-size: 48px; margin-bottom: 30px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
+        h2 { color: #667eea; font-size: 36px; margin: 30px 0 20px; border-left: 5px solid #764ba2; padding-left: 20px; }
+        h3 { color: #764ba2; font-size: 24px; margin: 25px 0 15px; }
+        .code-block { background: #f5f5f5; border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; border-radius: 8px; font-family: monospace; font-size: 14px; overflow-x: auto; line-height: 1.6; }
+        .prompt-header { background: #ffc107; color: #000; padding: 10px 15px; margin-bottom: 10px; border-radius: 5px; font-weight: bold; }
+        .footer { text-align: center; margin-top: 40px; color: white; }
+        .copy-btn { background: #667eea; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="nav-title">Part 9️⃣ - 提示詞庫大全</div>
+        <div class="nav-buttons">
+            <a href="index-main.html" class="nav-btn">← 返回</a>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <div class="slide">
+            <h1>📚 Part 9️⃣ - 提示詞庫大全</h1>
+            <p>本 Part 收集了遊戲製作全程中所有實用的提示詞。你可以直接複製使用，或根據自己的需求進行修改。</p>
+        </div>
+
+        <div class="slide">
+            <h2>📝 故事與角色生成提示詞</h2>
+
+            <h3>提示詞 1: 導師角色完整設定</h3>
+            <div class="prompt-header">► 複製並粘貼到 Gemini</div>
+            <div class="code-block">我需要為一款大學升學探索遊戲創建 11 位導師角色。
+
+這位導師的基本資訊：
+- 名字：[輸入名字]
+- 職業：[輸入職業，如創業家、藝術家等]
+- 年齡：40-50 歲
+- 性格核心詞：[輸入 3 個關鍵詞]
+
+請生成：
+1. 300-400 字的人生故事（重點是如何成為這個職業、遇到的挑戰和收穫）
+2. 3 句代表性台詞
+3. 5 個與年輕學生互動的故事場景
+4. 這位導師對應的 6 維屬性影響（創意力、分析力、領導力、同理心、勇氣、好奇心）
+5. 一個引人入勝的人生箴言
+
+格式：清晰易用的 JSON 或 Markdown</div>
+
+            <h3>提示詞 2: 故事選擇點批量生成</h3>
+            <div class="prompt-header">► 複製並粘貼到 Gemini</div>
+            <div class="code-block">為一個教育遊戲生成 10 個故事選擇點。
+
+背景設定：
+- 導師：[導師名字]
+- 場景：[場景描述]
+- 主題：[故事主題]
+
+每個選擇點應包括：
+1. 50-100 字的場景描述
+2. 3 個選項（每個 20-30 字）
+3. 每個選項的屬性影響（格式：創意力 +10, 分析力 -5）
+4. 選擇應該反映不同的人生價值觀，沒有明顯的「正確答案」
+
+輸出格式：JSON 陣列</div>
+
+            <h3>提示詞 3: 導師對話生成</h3>
+            <div class="prompt-header">► 複製並粘貼到 Gemini</div>
+            <div class="code-block">生成一位 [導師名字] 導師與年輕學生的互動對話。
+
+對話背景：
+- 地點：[場景]
+- 學生狀態：[學生的現狀或問題]
+- 對話重點：[想要讓導師傳達的核心信息]
+
+要求：
+1. 3-4 輪對話（導師和學生各 2-3 句）
+2. 導師既要鼓勵又要現實
+3. 包含 1-2 個啟發性的問題
+4. 最後開放式結尾，讓學生思考
+
+風格應該溫暖、專業、鼓勵。</div>
+        </div>
+
+        <div class="slide">
+            <h2>🎨 圖片生成提示詞</h2>
+
+            <h3>提示詞 4: 角色肖像生成（英文）</h3>
+            <div class="prompt-header">► 複製並粘貼到圖片生成工具</div>
+            <div class="code-block">a professional portrait of a 45-year-old [PROFESSION],
+[ETHNICITY], warm and approachable smile,
+wearing business casual attire,
+modern office or professional environment background,
+soft studio lighting with warm color palette,
+professional photography style,
+character design for educational game,
+inspiring and trustworthy expression</div>
+
+            <h3>提示詞 5: 場景背景生成（英文）</h3>
+            <div class="prompt-header">► 複製並粘貼到圖片生成工具</div>
+            <div class="code-block">[SCENE DESCRIPTION] at [TIME OF DAY],
+young student and mentor having a meaningful conversation,
+warm lighting with golden hour colors,
+vibrant and energetic atmosphere,
+modern and inspiring setting,
+character illustration style,
+educational and motivational mood</div>
+
+            <h3>提示詞 6: 結果插圖生成（英文）</h3>
+            <div class="prompt-header">► 複製並粘貼到圖片生成工具</div>
+            <div class="code-block">an inspiring illustration of a student looking at their future,
+[MAJOR] theme elements visible,
+vibrant colors and dynamic composition,
+hopeful and motivational mood,
+character design art style,
+educational illustration,
+[SPECIFIC ELEMENTS related to the major]</div>
+        </div>
+
+        <div class="slide">
+            <h2>✨ 結果生成提示詞</h2>
+
+            <h3>提示詞 7: 升學建議生成</h3>
+            <div class="prompt-header">► 複製並粘貼到 Gemini</div>
+            <div class="code-block">根據一位學生的個性屬性，生成升學建議。
+
+學生屬性：
+- 創意力：[0-100]
+- 分析力：[0-100]
+- 領導力：[0-100]
+- 同理心：[0-100]
+- 勇氣：[0-100]
+- 好奇心：[0-100]
+
+請提供：
+1. 前 3 個最適合的大學科系
+2. 對每個科系的具體理由（150 字）
+3. 2-3 個職業發展建議
+4. 1 句激勵性的結語
+
+語氣應該積極鼓勵，幫助學生看見自己的潛力。</div>
+
+            <h3>提示詞 8: 圖像提示詞自動生成</h3>
+            <div class="prompt-header">► 複製並粘貼到 Gemini</div>
+            <div class="code-block">根據推薦的大學科系和學生屬性，生成一個圖像提示詞。
+
+科系：[輸入科系]
+學生主要特徵：[輸入最高的 2-3 個屬性]
+
+生成的提示詞應該：
+1. 反映科系的特色和氛圍
+2. 包含相關的視覺元素
+3. 傳達積極向上的情感
+4. 適合用在圖片生成工具中
+
+語言：英文，300-400 字</div>
+        </div>
+
+        <div class="slide">
+            <h2>🔄 工作流程提示詞</h2>
+
+            <h3>提示詞 9: 故事邏輯檢查</h3>
+            <div class="prompt-header">► 複製並粘貼到 Gemini</div>
+            <div class="code-block">請檢查以下故事選擇點的邏輯：
+
+[貼入你的故事選擇點 JSON]
+
+檢查項目：
+1. 每個選擇是否有明顯的「正確答案」？
+2. 屬性影響是否合理？
+3. 選擇文案是否足夠清晰？
+4. 是否有遺漏的選項？
+5. 故事背景是否一致？
+
+提供改進建議。</div>
+
+            <h3>提示詞 10: 屬性平衡檢查</h3>
+            <div class="prompt-header">► 複製並粘貼到 Gemini</div>
+            <div class="code-block">我設計了 50+ 個遊戲選擇點，各個屬性的總影響如下：
+
+創意力：+250
+分析力：+240
+領導力：+260
+同理心：+255
+勇氣：+230
+好奇心：+245
+
+請評估：
+1. 屬性分布是否平衡？
+2. 是否存在過度強勢的屬性？
+3. 有什麼建議來改進平衡？</div>
+        </div>
+
+        <div class="slide">
+            <h2>💡 使用建議</h2>
+            <ul>
+                <li>📌 開始時直接複製提示詞使用</li>
+                <li>📌 根據自己的項目進行細微調整</li>
+                <li>📌 如果結果不理想，嘗試調整提示詞的細節</li>
+                <li>📌 保存效果最好的提示詞版本供後續使用</li>
+                <li>📌 與團隊分享高效的提示詞</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>🎯 提示詞最佳實踐</h2>
+            <ul>
+                <li><strong>清晰具體：</strong> 不要模糊，提供具體的數字和範圍</li>
+                <li><strong>格式明確：</strong> 指定輸出格式（JSON、Markdown 等）</li>
+                <li><strong>背景信息：</strong> 提供充分的上下文讓 AI 理解需求</li>
+                <li><strong>多次迭代：</strong> 第一次可能不完美，進行多輪優化</li>
+                <li><strong>保留版本：</strong> 記錄哪個版本效果最好</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="index-main.html" class="footer-btn">← 返回目錄</a>
+        <a href="teaching-part-10.html" class="footer-btn">最後一章：Part 10 →</a>
+    </div>
+</body>
+</html>

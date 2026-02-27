@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 🔟 - 課堂練習與進階</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft JhengHei', 'Segoe UI', Arial; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .nav-bar { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; z-index: 10000; }
+        .nav-title { color: white; font-size: 18px; font-weight: 700; }
+        .nav-btn { background: rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; }
+        .slide-container { max-width: 1400px; margin: 80px auto 0; padding-bottom: 40px; }
+        .slide { background: rgba(255,255,255,0.98); border-radius: 20px; padding: 50px; margin-bottom: 30px; }
+        h1 { color: #667eea; font-size: 48px; margin-bottom: 30px; border-bottom: 3px solid #667eea; padding-bottom: 20px; }
+        h2 { color: #667eea; font-size: 36px; margin: 30px 0 20px; border-left: 5px solid #764ba2; padding-left: 20px; }
+        h3 { color: #764ba2; font-size: 24px; margin: 25px 0 15px; }
+        p, li { font-size: 18px; line-height: 1.8; color: #444; margin-bottom: 15px; }
+        .task-box { background: #e3f2fd; border-left: 5px solid #2196f3; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .footer { text-align: center; margin-top: 40px; color: white; }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="nav-title">Part 🔟 - 課堂練習與進階</div>
+        <div class="nav-buttons">
+            <a href="index-main.html" class="nav-btn">← 返回</a>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <div class="slide">
+            <h1>🎯 Part 🔟 - 課堂練習與進階</h1>
+            <p>恭喜你完成了前 9 個 Part！現在是時候進行實戰練習，並探索進階優化方向。</p>
+        </div>
+
+        <div class="slide">
+            <h2>📋 初級練習任務</h2>
+
+            <div class="task-box">
+                <h3>Task 1: 建立你的第一個故事場景</h3>
+                <p><strong>任務：</strong>使用 Part 2 的方法，創建 1 個完整的故事場景（1 位導師 + 3 個選擇點）</p>
+                <p><strong>預計時間：</strong>2-3 小時</p>
+                <p><strong>評核標準：</strong></p>
+                <ul>
+                    <li>✓ 場景背景清晰</li>
+                    <li>✓ 3 個選擇沒有明顯的「正確答案」</li>
+                    <li>✓ 屬性影響合理</li>
+                    <li>✓ 文案吸引人</li>
+                </ul>
+            </div>
+
+            <div class="task-box">
+                <h3>Task 2: 生成角色圖片</h3>
+                <p><strong>任務：</strong>使用 Part 5 的提示詞，為 1 位導師生成肖像圖片</p>
+                <p><strong>預計時間：</strong>30 分鐘</p>
+                <p><strong>評核標準：</strong></p>
+                <ul>
+                    <li>✓ 圖片清晰且專業</li>
+                    <li>✓ 符合導師的性格特徵</li>
+                    <li>✓ 適合在遊戲中使用</li>
+                </ul>
+            </div>
+
+            <div class="task-box">
+                <h3>Task 3: 測試屬性系統</h3>
+                <p><strong>任務：</strong>創建 5 個不同的選擇組合，測試最終結果是否符合預期</p>
+                <p><strong>預計時間：</strong>1-2 小時</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>🚀 進階優化方向</h2>
+
+            <h3>1. 增加互動深度</h3>
+            <ul>
+                <li>添加分支回合系統（同一個故事點有多個回合）</li>
+                <li>創建"連鎖反應"機制（某個選擇影響後續故事）</li>
+                <li>設計"隱藏結局"（只有特定屬性組合才能解鎖）</li>
+            </ul>
+
+            <h3>2. 視覺效果升級</h3>
+            <ul>
+                <li>為每個故事場景添加背景圖片</li>
+                <li>製作屬性變化的動畫效果</li>
+                <li>設計雷達圖的視覺優化</li>
+                <li>添加過渡動畫和視覺反饋</li>
+            </ul>
+
+            <h3>3. 音效與沉浸感</h3>
+            <ul>
+                <li>為不同場景添加背景音樂</li>
+                <li>為選擇點添加音效反饋</li>
+                <li>實現音量控制和靜音選項</li>
+            </ul>
+
+            <h3>4. 數據分析</h3>
+            <ul>
+                <li>追蹤學生的選擇模式</li>
+                <li>分析最受歡迎的導師和故事點</li>
+                <li>收集使用者反饋進行優化</li>
+            </ul>
+
+            <h3>5. 社交功能</h3>
+            <ul>
+                <li>分享結果到社交媒體</li>
+                <li>與朋友比較屬性結果</li>
+                <li>排行榜系統</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>📚 學習資源推薦</h2>
+            <ul>
+                <li><strong>遊戲設計：</strong> "The Art of Game Design" by Jesse Schell</li>
+                <li><strong>故事寫作：</strong> "Story" by Robert McKee</li>
+                <li><strong>UI/UX 設計：</strong> "The Design of Everyday Things" by Don Norman</li>
+                <li><strong>React 開發：</strong> Official React Documentation</li>
+                <li><strong>AI 應用：</strong> Google AI Studio 和 OpenAI Cookbook</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>💬 常見問題</h2>
+
+            <h3>Q: 需要多久才能完成一個完整遊戲？</h3>
+            <p>A: 按照 4 個步驟，2-4 週（每週 5-10 小時）就能完成一個 MVP（最小可行產品）。優化和進階功能需要額外時間。</p>
+
+            <h3>Q: 可以單人完成嗎？</h3>
+            <p>A: 完全可以！一個人可以完成所有工作。如果分工，每人負責 2-3 個導師故事會更高效。</p>
+
+            <h3>Q: 故事點需要多複雜？</h3>
+            <p>A: 初版簡單即可。關鍵是邏輯清晰、選擇有意義。後期再逐步豐富。</p>
+
+            <h3>Q: 如何獲得最好的 AI 生成結果？</h3>
+            <p>A: 多次嘗試和優化提示詞。通常需要 3-5 輪才能得到滿意結果。</p>
+        </div>
+
+        <div class="slide">
+            <h2>🎓 下一步行動清單</h2>
+            <ul>
+                <li>☐ 選擇一個你想製作的主題（如遊戲、職業、學習路徑等）</li>
+                <li>☐ 完成 Part 1-3 的學習</li>
+                <li>☐ 開始 Task 1 的初級練習</li>
+                <li>☐ 記錄你的進度和遇到的問題</li>
+                <li>☐ 與朋友或同學分享你的成果</li>
+                <li>☐ 探索進階優化方向</li>
+                <li>☐ 持續改進和更新你的遊戲</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>✨ 最後的話</h2>
+            <p style="font-size: 20px; color: #667eea; font-weight: bold; margin: 30px 0;">
+                你現在已經掌握了使用 AI 快速製作教育遊戲的完整技能！<br><br>
+                記住：
+            </p>
+            <ul style="font-size: 18px;">
+                <li>💡 <strong>從簡開始：</strong>不需要一開始就完美，MVP 最重要</li>
+                <li>🔄 <strong>持續優化：</strong>根據反饋逐步改進</li>
+                <li>🤝 <strong>分享知識：</strong>教會其他人，互相學習</li>
+                <li>🚀 <strong>大膽創新：</strong>不怕嘗試新想法</li>
+                <li>📊 <strong>數據驅動：</strong>用數據來指導決策</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="index-main.html" class="footer-btn">← 返回目錄</a>
+        <p style="margin-top: 20px; font-size: 16px;">
+            🎉 恭喜你完成了全部 10 個 Part 的學習！<br>
+            祝你在 AI 驅動的教育遊戲製作中取得成功！
+        </p>
+    </div>
+</body>
+</html>
