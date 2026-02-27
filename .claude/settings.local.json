@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tail:*)",
+      "Bash(cd:*)",
+      "Bash(cp:*)",
+      "Bash(cd D:\\\\AI教學與專案實作\\\\專案_學系探索遊戲:*)"
+    ]
+  }
+}
