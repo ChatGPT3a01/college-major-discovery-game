@@ -13,7 +13,8 @@
       "Bash(grep:*)",
       "Bash(grep ✓:*)",
       "Bash(git add:*)",
-      "Bash(git status:*)"
+      "Bash(git status:*)",
+      "Bash(mkdir:*)"
     ]
   }
 }

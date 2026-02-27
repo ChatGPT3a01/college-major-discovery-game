@@ -23,7 +23,7 @@
 
 # **[👉 點擊進入線上遊戲 👈](https://chatgpt3a01.github.io/college-major-discovery-game/)**
 
-# **[📚 遊戲教學製作 - 完整教學簡報](./教學/教學簡報.html)**
+# **[📚 遊戲教學製作 - 完整教學簡報](https://chatgpt3a01.github.io/college-major-discovery-game/)**
 
 ### 📱 **掃描 QR CODE 立即進入**
 
