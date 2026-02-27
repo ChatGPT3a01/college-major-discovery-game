@@ -12,7 +12,8 @@
       "Bash(sleep 3:*)",
       "Bash(grep:*)",
       "Bash(grep ✓:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git status:*)"
     ]
   }
 }
